@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.activity_top.*
 import local.takamk2.selfmanager3.R
 import local.takamk2.selfmanager3.viewmodel.TopActivityVM
@@ -20,9 +21,9 @@ class TopActivity : AppCompatActivity() {
         vm = ViewModelProviders.of(this).get(TopActivityVM::class.java)
 
         // データをViewModelにあるdataに送る
-        redButton.setOnClickListener { vm.postData(1) }
-        yellowButton.setOnClickListener { vm.postData(2) }
-        blueButton.setOnClickListener { vm.postData(3) }
+        RxView.clicks(redButton).subscribe { vm.postData(1) }
+        RxView.clicks(yellowButton).subscribe { vm.postData(2) }
+        RxView.clicks(blueButton).subscribe { vm.postData(3) }
 
         // ViewModelにあるdataを監視。dataが更新されたらViewを更新する
         vm.data.observe(this, Observer {
