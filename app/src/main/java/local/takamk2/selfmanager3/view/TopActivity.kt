@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_top.*
 import local.takamk2.selfmanager3.R
 import local.takamk2.selfmanager3.viewmodel.TopActivityVM
 import timber.log.Timber
+import java.text.Collator
 
 class TopActivity : AppCompatActivity() {
 
@@ -128,8 +129,8 @@ class TopActivity : AppCompatActivity() {
         }
 
         override fun compare(o1: SampleData?, o2: SampleData?): Int {
-            Timber.d("compare: o1=$o1, o2=$o2")
-            return o1!!.id - o2!!.id
+            Timber.d("compare: o1=${o1?.data}, o2=${o2?.data}")
+            return Collator.getInstance().compare(o1?.data, o2?.data)
         }
 
         override fun areContentsTheSame(oldItem: SampleData?, newItem: SampleData?): Boolean {
