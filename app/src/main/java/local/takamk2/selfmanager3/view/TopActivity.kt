@@ -8,7 +8,7 @@ import local.takamk2.selfmanager3.viewmodel.TopActivityVM
 
 class TopActivity : AppCompatActivity() {
 
-    lateinit var vm: TopActivityVM
+    private lateinit var vm: TopActivityVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
