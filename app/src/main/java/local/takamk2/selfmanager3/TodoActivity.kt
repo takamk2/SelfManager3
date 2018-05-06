@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.jakewharton.rxbinding2.view.RxView
 
 import kotlinx.android.synthetic.main.activity_todo.*
+import local.takamk2.selfmanager3.view.dialog.AddTodoDialog
 
 class TodoActivity : AppCompatActivity() {
 
@@ -14,6 +15,7 @@ class TodoActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         RxView.clicks(fab).subscribe {
+            AddTodoDialog().show(supportFragmentManager, AddTodoDialog::class.java.simpleName)
         }
     }
 }
